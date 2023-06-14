@@ -102,13 +102,14 @@
     }
 // -----------------------
 
-let mainImage = document.querySelector('.mainImg')
+let mainImage = document.querySelector('.topPic')
 let option = document.querySelector('.options')
 let miniOp = document.querySelectorAll('.choice')
 let productBox = document.querySelector('.productContainer')
 let pic = document.querySelector('.polaroid')
 let textBox= document.querySelector('.textContainer')
 let productImage = document.querySelector('.productImg')
+
 
 
 
@@ -131,115 +132,124 @@ const changeAll = (category) => {
         details('kids')
     }
 }
- const changeTopPic = (category) =>{
-    // createImage 
-    if(category==='mens'){
-    let newimage = document.createElement('img')
-        newimage.setAttribute('src', majorContainer.mens.headImage)
-        newimage.setAttribute('class','topPic')
-        // replaceWith current
-       mainImage.replaceWith(newimage)
-    }else if(category==='womens'){
-        let newimage = document.createElement('img')
-            newimage.setAttribute('src', majorContainer.womens.headImage)
-            newimage.setAttribute('class','topPic')
-        // replaceWith current
-        mainImage.replaceWith(newimage)
-    }else if(category==='kids'){
-            let newimage = document.createElement('img')
-                newimage.setAttribute('src', majorContainer.kids.headImage)
-                newimage.setAttribute('class','topPic')
-            // replaceWith current
-            mainImage.replaceWith(newimage)
+
+const changeTopPic = (category) =>{
+    // Determine what flavor
+    if(category === "mens"){
+        let body = document.querySelector('body')
+        body.style.backgroundImage = "url('https://media4.giphy.com/media/l41K3o5TzvmhZwd4A/giphy.gif')"
+        addText(option,majorContainer.mens.optionTags)
+        addImage(mainImage,majorContainer.mens.headImage)
+      
+       
+        // ------------------------------
+    }else if(category === "womens"){
+        let body = document.querySelector('body')
+            body.style.backgroundImage = "url('https://i.gifer.com/HkiH.gif')"
+            addText(option,majorContainer.womens.optionTags)
+            addImage(mainImage,majorContainer.womens.headImage)
+       
+    }else if(category === "kids"){
+        let body = document.querySelector('body')
+        body.style.backgroundImage = "url('https://i.pinimg.com/originals/5a/69/43/5a6943b231c1eb459b78484fdc95196c.gif')"
+        addText(option,majorContainer.kids.optionTags)
+        addImage(mainImage,majorContainer.kids.headImage)
+       
     }
 }
 
-    const changeOptions = (category) =>{
-        if(category==='mens'){
-            majorContainer.mens.optionTags.forEach((tagname)=>{
-            // CREATE ELE
-            let txt = document.createElement('div')
-            txt.innerHTML = tagname
-            // REPLACE ELEMENT WITH NEW ELEMENT
-            option.append(txt)
-            })
-        }else if(category==='womens'){
-            majorContainer.womens.optionTags.forEach((tagname)=>{
-            // CREATE ELE
-            let txt = document.createElement('div')
-            txt.innerHTML = tagname
-            // REPLACE ELEMENT WITH NEW ELEMENT
-            option.append(txt)
-            })
-        }else if(category==='kids'){
-            majorContainer.kids.optionTags.forEach((tagname)=>{
-            // CREATE ELE
-            let txt = document.createElement('div')
-            txt.innerHTML = tagname
-            // REPLACE ELEMENT WITH NEW ELEMENT
-            option.append(txt)
-            })
-        }
-    }
-
-        const product= (category) => {
-            if(category==='mens'){
-                majorContainer.mens.productImages.forEach((obj)=>{
-                let shopBox  = document.createElement('img')
-                shopBox.setAttribute('src',obj.pic)
-                shopBox.setAttribute('class','product')
-                productBox.append(shopBox)
-                productImage.replaceWith(shopBox)
-                })
-            } else  if(category==='womens'){
-                majorContainer.womens.productImages.forEach((obj)=>{
-                let shopBox  = document.createElement('img')
-                shopBox.setAttribute('src',obj.pic)
-                shopBox.setAttribute('class','product')
-                productBox.append(shopBox)
-                productImage.replaceWith(shopBox)
-                })
-            } else  if(category==='kids'){
-                majorContainer.kids.productImages.forEach((obj)=>{
-                let shopBox  = document.createElement('img')
-                shopBox.setAttribute('src',obj.pic)
-                shopBox.setAttribute('class','product')
-                productBox.append(shopBox)
-                productImage.replaceWith(shopBox)
-                })
-            }
-
+const changeOptions = (category) =>{
+    if(category==='mens'){
+        majorContainer.mens.optionTags.forEach((tagname)=>{
+        // CREATE ELE
+        let txt = document.createElement('div')
+        txt.innerHTML = tagname
+        // REPLACE ELEMENT WITH NEW ELEMENT
         
+        option.append(txt)
+        })
+    }else if(category==='womens'){
+        majorContainer.womens.optionTags.forEach((tagname)=>{
+        // CREATE ELE
+        let txt = document.createElement('div')
+        txt.innerHTML = tagname
+        // REPLACE ELEMENT WITH NEW ELEMENT
+        
+        option.append(txt)
+        })
+    }else if(category==='kids'){
+        majorContainer.kids.optionTags.forEach((tagname)=>{
+        // CREATE ELE
+        let txt = document.createElement('div')
+        txt.innerHTML = tagname
+        // REPLACE ELEMENT WITH NEW ELEMENT
+        
+        option.append(txt)
+        })
+    }
+}
 
+
+const product= (category) => {
+    if(category==='mens'){
+        majorContainer.mens.productImages.forEach((obj)=>{
+        let shopBox  = document.createElement('img')
+        shopBox.setAttribute('src',obj.pic)
+        shopBox.setAttribute('class','product')
+        productBox.append(shopBox)
+        productImage.replaceWith(shopBox)
+        })
+    } else  if(category==='womens'){
+        majorContainer.womens.productImages.forEach((obj)=>{
+        let shopBox  = document.createElement('img')
+        shopBox.setAttribute('src',obj.pic)
+        shopBox.setAttribute('class','product')
+        productBox.append(shopBox)
+        productImage.replaceWith(shopBox)
+        })
+    } else  if(category==='kids'){
+        majorContainer.kids.productImages.forEach((obj)=>{
+        let shopBox  = document.createElement('img')
+        shopBox.setAttribute('src',obj.pic)
+        shopBox.setAttribute('class','product')
+        productBox.append(shopBox)
+        productImage.replaceWith(shopBox)
+        })
     }
 
-    // ---------------------------------------------------
-    const details= (category) => {
-        if(category==='mens'){
-            let body = document.querySelector('body')
-            body.style.backgroundImage = "url('https://media4.giphy.com/media/l41K3o5TzvmhZwd4A/giphy.gif')"
-            addText(textBox,majorContainer.mens.textDescription)
-            addImage(pic,majorContainer.mens.lowImage)
-        } 
-        else  if(category==='womens'){
-            let body = document.querySelector('body')
-            body.style.backgroundImage = "url('https://i.gifer.com/HkiH.gif')"
-            addText(textBox,majorContainer.womens.textDescription)
-            addImage(pic,majorContainer.womens.lowImage)
-        } else  if(category==='kids'){
-            let body = document.querySelector('body')
-            body.style.backgroundImage = "url('https://i.pinimg.com/originals/5a/69/43/5a6943b231c1eb459b78484fdc95196c.gif')"
-            addText(textBox,majorContainer.kids.textDescription)
-            addImage(pic,majorContainer.kids.lowImage)
-        }
-    }   
-    
-    const addText =(target, text)=>{
-        target.innerHTML = text
-    }
-    const addImage =(target, url)=>{
-        target.setAttribute('src',url)
-    }
 
+
+}
+
+const details= (category) => {
+    if(category==='mens'){
+       
+        addText(textBox,majorContainer.mens.textDescription)
+        addImage(pic,majorContainer.mens.lowImage)
+    } 
+    else  if(category==='womens'){
+       
+        addText(textBox,majorContainer.womens.textDescription)
+        addImage(pic,majorContainer.womens.lowImage)
+    } else  if(category==='kids'){
+        
+        addText(textBox,majorContainer.kids.textDescription)
+        addImage(pic,majorContainer.kids.lowImage)
+    }
+}   
+
+
+const addText =(target, text)=>{
+    target.innerHTML = text
+}
+
+const addImage =(target, url)=>{
+    target.setAttribute('src',url)
     
-    
+}
+const uploadImage = (target,pic)=>{
+let newImage = document.createElement('img')
+newImage.setAttribute('src',pic)
+newImage.setAttribute('class','lowerImage')
+target.innerHTML(newImage)
+}
